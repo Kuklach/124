@@ -1,6 +1,6 @@
 local CATEGORY_NAME = "Utility"
 
-function ulx.nolag(ply)
+function ulx.nolag()
 
 	for _, v in pairs( ents.FindByClass( "prop_*" ) ) do
 
