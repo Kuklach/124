@@ -4,7 +4,7 @@ function ulx.nolag(ply)
 
 	for _, v in pairs( ents.FindByClass( "prop_*" ) ) do
 
-		local phys = prop:GetPhysicsObject()
+		local phys = v:GetPhysicsObject()
 
 		if IsValid( phys ) then
 
