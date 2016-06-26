@@ -3,6 +3,8 @@ local CATEGORY_NAME = "Utility"
 
 function ulx.nolag(ply,targ)
 
+	local pl = targ:IsValid()
+
 	if (not ply:IsValid()) then return end
 
 	for _, v in pairs( ents.FindByClass( "prop_*" ) ) do
@@ -11,9 +13,13 @@ function ulx.nolag(ply,targ)
 
 		if IsValid( phys ) then
 
-			if (targ:IsValid() and v:GetOwner() == v) then
+			if (pl) then
 
-				phys:EnableMotion( false )
+				if (v:GetOwner() == targ) then
+
+					phys:EnableMotion( false )
+
+				end
 
 			else
 
