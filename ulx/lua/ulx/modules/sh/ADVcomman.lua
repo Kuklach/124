@@ -9,9 +9,9 @@ function ulx.nolag(calling_ply,target_ply)
 
 		local phys = v:GetPhysicsObject()
 
-		if IsValid( phys ) then
+		if phys:IsValid() then
 
-			if (pl) then
+			if (pl == true) then
 
 				if (v:GetOwner() == target_ply) then
 
@@ -29,7 +29,7 @@ function ulx.nolag(calling_ply,target_ply)
 
 	end
 
-	 if (pl) then
+	 if (pl == true) then
 		 ulx.fancyLogAdmin( calling_ply, "#A frozen #T props!", target_ply )
 	 else
 		 ulx.fancyLogAdmin( calling_ply, "#A froze all the props!")
