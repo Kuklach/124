@@ -2,9 +2,10 @@ local CATEGORY_NAME = "Utility"
 ------------------------------ Nolag ------------------------------
 function ulx.nolag(calling_ply,target_plys)
 
+	local Props = ents.FindByClass( "prop_*" )
 	for key, target in pairs (target_plys) do
 
-		for _, p in pairs( ents.FindByClass( "prop_*" ) ) do
+		for _, p in pairs( Props ) do
 
 			local PropOwner = NADMOD.Props[p:EntIndex()].Owner
 			local phys = p:GetPhysicsObject()
