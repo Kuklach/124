@@ -2,26 +2,23 @@ local CATEGORY_NAME = "Utility"
 ------------------------------ Nolag ------------------------------
 function ulx.nolag(calling_ply,target_plys)
 
-	local affected_plys = {}
-
 	for key, target in pairs (target_plys) do
-
-		if ulx.getExclusive( target, calling_ply ) then
-			ULib.tsayError( calling_ply, ulx.getExclusive( target, calling_ply ), true )
-		else
-			table.insert( affected_plys, target )
-		end
 
 		for _, p in pairs( ents.FindByClass( "prop_*" ) ) do
 
-			--local PropOwner = NADMOD.Props[p:EntIndex()].Owner
+			local PropOwner = NADMOD.Props[p:EntIndex()].Owner
 			local phys = p:GetPhysicsObject()
-			RunConsoleCommand("say",tostring(phys))
+			if (PropOwner == target and phys:IsValid()) then
+
+				phys:EnableMotion(false)
+
+			end
+
 		end
 
 	end
 
-	ulx.fancyLogAdmin( calling_ply, "#A frozen props #T", affected_plys )
+	ulx.fancyLogAdmin( calling_ply, "#A frozen props #T", target_plys )
 
 end
 
