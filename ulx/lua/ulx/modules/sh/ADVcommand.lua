@@ -1,47 +1,32 @@
 local CATEGORY_NAME = "Utility"
+------------------------------ Nolag ------------------------------
+function ulx.nolag(calling_ply,target_plys)
 
+	local affected_plys = {}
 
-function ulx.nolag(calling_ply,target_ply)
+	for key, target in pairs (target_plys) do
 
-	for _, v in pairs( ents.FindByClass( "prop_*" ) ) do
+		if ulx.getExclusive( target, calling_ply ) then
+			ULib.tsayError( calling_ply, ulx.getExclusive( target, calling_ply ), true )
+		else
+			table.insert( affected_plys, target )
+		end
 
-		local PropOwner = NADMOD.Props[v:EntIndex()].Owner
-		local phys = v:GetPhysicsObject()
+		for _, p in pairs( ents.FindByClass( "prop_*" ) ) do
 
-		if phys:IsValid() then
-
-			if (target_ply ~= nil) then
-
-				if (target_ply == PropOwner) then
-
-					phys:EnableMotion( false )
-
-				end
-
-			else
-
-				phys:EnableMotion( false )
-
-			end
-
+			--local PropOwner = NADMOD.Props[p:EntIndex()].Owner
+			local phys = p:GetPhysicsObject()
+			RunConsoleCommand("say",tostring(phys))
 		end
 
 	end
 
-	 if (target_ply ~= nil) then
-
-		 ulx.fancyLogAdmin( calling_ply, "#A frozen #T props!", target_ply )
-
-	 else
-
-		 ulx.fancyLogAdmin( calling_ply, "#A froze all the props!")
-
-	 end
+	ulx.fancyLogAdmin( calling_ply, "#A frozen props #T", affected_plys )
 
 end
 
 
 local nolag = ulx.command( CATEGORY_NAME, "ulx nolag", ulx.nolag, "!nolag")
-nolag:addParam{ type = ULib.cmds.PlayerArg, hint = "player",default = nil,ULib.cmds.optional}
+nolag:addParam{ type = ULib.cmds.PlayerArg}
 nolag:defaultAccess( ULib.ACCESS_ADMIN )
 nolag:help( "Freeze all props!" )
