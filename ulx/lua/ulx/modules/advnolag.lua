@@ -18,8 +18,7 @@ if SERVER then
 
 			SetPhysTime(math.Clamp(GetPhysTime() - engine.TickInterval(),0.01,1))
 
-		end
-		if (GetPhysTime() < 1) then
+		elseif (GetPhysTime() < 1) then
 
 			SetPhysTime(math.Clamp(GetPhysTime() + 0.1,0.01,1))
 
