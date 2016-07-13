@@ -7,7 +7,7 @@ function ulx.pvp(calling_ply)
 		calling_ply:Spawn()
 		calling_ply:GodDisable()
 		calling_ply.ULXHasGod = nil
-		ulx.fancyLogAdmin( calling_ply, "#A changed mod to PvP" )
+		ulx.fancyLogAdmin( calling_ply, "#A changed mod to PvP!" )
 
 	else
 
