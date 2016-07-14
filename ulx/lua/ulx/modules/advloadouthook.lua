@@ -34,7 +34,7 @@ if SERVER then
 		local name = tostring(wep)
 		if (not ply.ULXHasGod and not string.find(name,"weapon_cs")) then
 
-			ULib.tsayError( ply, "You can take onli cs weapons!", true )
+		  ply:ChatPrint("You can take onli cs weapons!")
 			return false
 
 		end
