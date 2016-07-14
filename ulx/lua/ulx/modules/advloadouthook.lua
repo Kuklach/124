@@ -29,4 +29,21 @@ if SERVER then
 	hook.Remove("PlayerLoadout","kek")
 	hook.Add("PlayerLoadout","kek",PlayerLoadout)
 
+	local function PlayerCanPickupWeapon( ply ,wep)
+
+		local name = tostring(wep)
+		if (not ply.ULXHasGod and not string.find(name,"weapon_cs")) then
+
+			ULib.tsayError( ply, "You can take onli cs weapons!", true )
+			return false
+
+		end
+
+		return true
+
+	end
+
+	hook.Remove("PlayerCanPickupWeapon","kek2")
+	hook.Add("PlayerCanPickupWeapon","kek2",PlayerCanPickupWeapon)
+
 end
