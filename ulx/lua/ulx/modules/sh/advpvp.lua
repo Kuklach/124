@@ -7,6 +7,7 @@ function ulx.pvp(calling_ply)
 		calling_ply:Spawn()
 		calling_ply:GodDisable()
 		calling_ply.ULXHasGod = nil
+		hook.Run("PlayerLoadout",calling_ply)
 		ulx.fancyLogAdmin( calling_ply, "#A changed mod to PvP!" )
 
 	else
@@ -32,6 +33,7 @@ function ulx.build(calling_ply)
 	elseif (timer.Exists(calling_ply:Name())) then
 
 		timer.Remove(calling_ply:Name())
+		calling_ply:SetHealth(100)
 
 	end
 
@@ -43,6 +45,7 @@ function ulx.build(calling_ply)
 
 		calling_ply:GodEnable()
 		calling_ply.ULXHasGod = true
+		hook.Run("PlayerLoadout",calling_ply)
 		ulx.fancyLogAdmin( calling_ply, "#A changed mod to Build!" )
 
 	end
