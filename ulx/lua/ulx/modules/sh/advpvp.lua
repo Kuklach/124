@@ -23,6 +23,18 @@ pvp:help( "PvP mod!" )
 ------------------------------ Build ------------------------------
 function ulx.build(calling_ply)
 
+	if (calling_ply.restrictBuild == true) then
+
+		ULib.tsayError( calling_ply, "Охуевшее тело тебе запрещен Build мод!", true )
+		calling_ply:KillSilent()
+		return
+
+	elseif (timer.Exists(calling_ply:Name())) then
+
+		timer.Remove(calling_ply:Name())
+
+	end
+
 	if (calling_ply.ULXHasGod) then
 
 		ULib.tsayError( calling_ply, "You arleady in Build mode!", true )
