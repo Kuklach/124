@@ -36,8 +36,27 @@ if SERVER then
 	hook.Remove("PlayerDeath","pvp")
 	hook.Add("PlayerDeath","pvp",pvp)
 
-else
+	local function PlayerNoClip( ply, desiredState )
 
-	return
+		if (ply:IsAdmin() or ply:IsSuperAdmin()) then
+
+			return true
+
+		end
+
+		if (not ply.ULXHasGod or desiredState) then
+
+			return false
+
+		else
+
+			return true
+
+		end
+
+	end
+
+	hook.Remove( "PlayerNoClip", "PlayerNoClip")
+	hook.Add( "PlayerNoClip", "PlayerNoClip",PlayerNoClip)
 
 end
