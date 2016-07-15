@@ -16,7 +16,7 @@ if SERVER then
 		if (attacker.violations >= Max) then
 
 			attacker.violations = 0
-			timer.Simple(Max * 60,function() attacker.restrictBuild = false ulx.fancyLogAdmin( attacker, "#A тебе снова доступен в Build мод!") end)
+			timer.Simple(Max * 60,function() attacker.restrictBuild = false ulx.fancyLogAdmin( attacker, "#A тебе снова доступен Build мод!") end)
 			attacker.restrictBuild = true
 			attacker:GodDisable()
 			attacker.ULXHasGod = nil
