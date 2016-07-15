@@ -38,21 +38,13 @@ if SERVER then
 
 	local function PlayerNoClip( ply, desiredState )
 
-		if (ply:IsAdmin() or ply:IsSuperAdmin()) then
+		if (ply.ULXHasGod or ply:IsAdmin() or ply:IsSuperAdmin() or desiredState == false) then
 
 			return true
 
 		end
 
-		if (not ply.ULXHasGod or desiredState) then
-
-			return false
-
-		else
-
-			return true
-
-		end
+		return false
 
 	end
 
