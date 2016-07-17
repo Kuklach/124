@@ -23,11 +23,17 @@ if SERVER then
 			attacker:SetHealth(1)
 			timer.Create(attacker:Name(),1,0,function() attacker:SetHealth(1) end)
 			ulx.fancyLogAdmin( attacker, "#A уебывает в PvP мод на #s минут!",Max)
+			local exprushens2 = ents.FindByClass("gmod_wire_expression2")
+			for _,v in pairs(exprushens2) do
+				if (v:IsValid() and attacker == E2Lib.getOwner(calling_ply, v) and not attacker:IsSuperAdmin()) then
+					v:Remove()
+				end
+			end
 
 		elseif (attacker.ULXHasGod or attacker:GetMoveType() == MOVETYPE_NOCLIP) then
 
 			attacker.violations = attacker.violations + 1
-			ulx.fancyLogAdmin( attacker, "#A нарушил правила PvP #s/#s раз!", attacker.violations,Max)
+			ulx.fancyLogAdmin( attacker, "#A убил в Build моде #s/#s. дальше будет наказание!", attacker.violations,Max)
 
 		end
 

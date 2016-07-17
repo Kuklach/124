@@ -37,6 +37,12 @@ function ulx.pvp(calling_ply,OnBuild)
 			calling_ply:Spawn()
 			calling_ply:GodDisable()
 			calling_ply.ULXHasGod = nil
+			local exprushens2 = ents.FindByClass("gmod_wire_expression2")
+			for _,v in pairs(exprushens2) do
+				if (v:IsValid() and calling_ply == E2Lib.getOwner(calling_ply, v) and not calling_ply:IsSuperAdmin()) then
+					v:Remove()
+				end
+			end
 			hook.Run("PlayerLoadout",calling_ply)
 			ulx.fancyLogAdmin( calling_ply, "#A changed mod to PvP!" )
 
