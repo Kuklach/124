@@ -1,4 +1,4 @@
-if SERVER then
+if true then
 
 	local SetPhysTime = function(time)
 
@@ -15,7 +15,7 @@ if SERVER then
 	local function call()
 
 		if (engine.TickInterval() > 0.1) then
-
+			print(engine.TickInterval())
 			SetPhysTime(math.Clamp(GetPhysTime() - engine.TickInterval(),0.01,1))
 
 		elseif (GetPhysTime() < 1) then
@@ -27,6 +27,6 @@ if SERVER then
 	end
 
 	hook.Remove("PhysicsCollide","nolag")
-	hook.Add("PhysicsCollide","nolag",call)
+	hook.Add("Think","nolag",call)
 
 end
